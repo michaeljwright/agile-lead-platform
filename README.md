@@ -6,9 +6,9 @@
 ## Clone the repo
 
 ```bash
-$ git clone https://github.com/michaeljwright/agile-lead-app.git
+$ git clone https://github.com/michaeljwright/agile-lead-platform.git
 
-$ cd agile-lead-app
+$ cd agile-lead-platform
 ```
 
 ## Setup
