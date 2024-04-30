@@ -1,0 +1,49 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+  	match /participants/{participantId} {
+    	allow create, read, update: if request.auth != null && request.auth.uid == participantId;
+    }
+    
+    match /organisations/{orgId} {
+    	allow create, read: if request.auth != null
+      allow update, delete: if request.auth != null && request.auth.uid in get(/databases/$(database)/documents/organisations/$(orgId)).data.admins;
+    }
+    
+    match /users/{userId} {
+      allow create, read, update, delete: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    match /teams/{teamId} {
+    	allow create, read: if request.auth != null && teamId in get(/databases/$(database)/documents/participants/$(request.auth.uid)).data.resources;
+  		allow create, read, update: if request.auth != null && request.auth.uid == get(/databases/$(database)/documents/teams/$(teamId)/users/$(request.auth.uid)).data.id;
+    
+    	match /users/{userId} {
+      	allow create, read, update: if request.auth != null && (request.auth.uid == get(/databases/$(database)/documents/teams/$(teamId)/users/$(request.auth.uid)).data.id || teamId in get(/databases/$(database)/documents/participants/$(request.auth.uid)).data.resources);
+      }
+      
+      match /invites/{userId} {
+      	allow read: if request.auth != null && request.auth.token.email in get(/databases/$(database)/documents/teams/$(teamId)/invites/$(userId)).data.emails;
+    		allow create, read, update, delete: if request.auth != null && request.auth.uid == get(/databases/$(database)/documents/teams/$(teamId)/users/$(request.auth.uid)).data.id;
+    	}
+    
+    	match /sprints/{sprintId} {
+      	allow read, update: if request.auth != null && request.auth.uid == get(/databases/$(database)/documents/teams/$(teamId)/users/$(request.auth.uid)).data.id;
+    		allow create, delete: if request.auth != null && request.auth.uid == get(/databases/$(database)/documents/teams/$(teamId)/users/$(request.auth.uid)).data.id;
+    	}
+    }
+  
+    match /games/{gameId} {
+      allow write, read, update, delete: if request.auth != null && gameId in get(/databases/$(database)/documents/participants/$(request.auth.uid)).data.resources;
+      
+      match /players/{playerId} {
+      	allow read, write: if request.auth != null && request.auth.uid == playerId
+      }
+      
+      match /issues/{issueId} {
+      	allow read, write: if request.auth != null && gameId in get(/databases/$(database)/documents/participants/$(request.auth.uid)).data.resources;
+      }
+    }
+  }
+}

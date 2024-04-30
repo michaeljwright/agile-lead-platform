@@ -1,0 +1,12 @@
+User-agent: *
+
+Disallow: /new-game
+Disallow: /account
+Disallow: /games
+Disallow: /game/
+Disallow: /game/*
+Disallow: /team/*
+Disallow: /teams
+Disallow: /new-team
+Disallow: /invite
+Disallow: /invite/*
