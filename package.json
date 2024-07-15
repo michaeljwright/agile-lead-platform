@@ -46,6 +46,8 @@
     "@types/react-linkify": "^1.0.4",
     "@typescript-eslint/eslint-plugin": "^5.47.0",
     "@typescript-eslint/parser": "^5.47.0",
+    "cypress": "^13.8.1",
+    "cypress-firebase": "^4.0.0",
     "eslint": "^8.30.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
@@ -53,6 +55,7 @@
     "eslint-plugin-n": "^15.6.0",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.31.11",
+    "firebase-admin": "^12.1.0",
     "prettier": "^2.8.1"
   }
 }
