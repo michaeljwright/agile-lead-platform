@@ -13,11 +13,11 @@ $ cd agile-lead-platform
 
 ## Setup
 
-1. Copy .env-example and rename to .env-local
-2. Go to https://firebase.google.com and create a project for a webapp. Then add the details to the .env-local file.
-3. Create a Firebase firestore db and set rules to those within firestore-rules.txt
-4. Remember to change the SITE_URL in .env-local if you are using a different server or port.
-5. If you're deploying to a live environment, its worth setting ANONYMOUS_SIGNIN_ENABLED in your env to blank (not false).
+1. Copy `.env-example` and rename to `.env-local`
+2. Go to https://firebase.google.com and create a project for a webapp. Then add the details to the `.env-local` file.
+3. Create a Firebase firestore db and set rules to those within `firestore-rules.txt`
+4. Remember to change the `SITE_URL` in `.env-local` if you are using a different server or port.
+5. If you're deploying to a live environment, its worth setting `ANONYMOUS_SIGNIN_ENABLED` in your env to blank (not false).
 
 ## Install & Run
 
@@ -38,3 +38,23 @@ $ npm run start
 $ yarn build
 $ yarn start
 ```
+
+## Setup & Run Tests
+
+### Cypress E2E Tests
+
+To run the E2E tests you need to jump through a few hoops due to Firebase auth etc.
+
+1. Generate and download a service account as described in https://firebase.google.com/docs/admin/setup#initialize_the_sdk_in_non-google_environments
+2. Create the file `./serviceAccount.json` in your project root and add the contents of the downloaded json file from above.
+3. Create the file `./cypress.env.json` in your project root and add the following below.
+
+```json
+{
+	"TEST_UID": "<YOUR API KEY>",
+	"FIREBASE_PROJECT_ID": "<YOUR API KEY>",
+	"FIREBASE_API_KEY": "<YOUR API KEY>"
+}
+```
+
+4. Run the tests with cypress using `npx cypress open` and then selecting the specific tests you want to run.
