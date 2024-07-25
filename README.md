@@ -41,9 +41,15 @@ $ yarn start
 
 ## Setup & Run Tests
 
+A lot of work needs doing on the test coverage. We are working on it!
+
+### Jest Unit Tests
+
+To run the unit tests, simply run `npm test`
+
 ### Cypress E2E Tests
 
-To run the E2E tests you need to jump through a few hoops due to Firebase auth etc.
+To run the E2E tests, you need to jump through a few hoops due to Firebase auth etc.
 
 1. Generate and download a service account as described in https://firebase.google.com/docs/admin/setup#initialize_the_sdk_in_non-google_environments
 2. Create the file `./serviceAccount.json` in your project root and add the contents of the downloaded json file from above.
