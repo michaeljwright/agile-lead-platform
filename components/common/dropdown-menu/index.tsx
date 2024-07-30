@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { paths } from 'constants/theme/routes'
-import { IssueTrigger } from '../../../layout/game/components/issue/component'
+import { IssueTrigger } from '../../../layout/game/components/issue/component/issue-trigger'
 import { Box, Button, Icon, Typography } from 'components/common'
 import * as Styles from './styles'
 import { Cross2Icon } from '@radix-ui/react-icons'
