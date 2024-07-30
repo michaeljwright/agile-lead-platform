@@ -1,6 +1,7 @@
 import { jest, describe, expect } from '@jest/globals'
 import { render, fireEvent } from '@testing-library/react'
 import { ButtonIcon } from '../../../components/common/button-icon'
+import '@testing-library/jest-dom'
 
 describe('ButtonIcon component', () => {
   it('should spread remaining props to Styles.Button component', () => {
