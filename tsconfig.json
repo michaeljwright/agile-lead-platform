@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": ["es5", "dom", "dom.iterable", "esnext"],
+    "types": ["node", "jest", "cypress", "@testing-library/jest-dom"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -21,6 +22,6 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "config/theme"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "config/theme", "./jest.setup.ts", "./jest.config.ts"],
   "exclude": ["node_modules", "**/*.js"]
 }
